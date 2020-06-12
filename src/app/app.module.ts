@@ -12,9 +12,12 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerCreateComponent } from './customer-create/customer-create.component';
 import { LoginComponent } from './login/login.component';
 import {ErrorComponent} from './error.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BasicAuthInterceptor} from './basicauth.interceptor.service';
+import {MatTableModule} from '@angular/material';
 const appRoutes: Routes = [
-  { path: 'customer-list', component: CustomerListComponent },
-  { path: 'customer-create',      component: CustomerCreateComponent },
+  { path: 'customer-list', component: CustomerListComponent},
+  { path: 'customer-list/:id', component: CustomerCreateComponent },
   {
     path: 'login',
     component: LoginComponent
@@ -22,7 +25,7 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  },  
+  },
 ];
 
 @NgModule({
@@ -37,13 +40,16 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MyMaterialModule,
     RouterModule.forRoot(
       appRoutes,
-    )    
+    ),
   ],
   entryComponents: [ErrorComponent],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { ErrorComponent } from '../error.component';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,25 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public username: string = "";
-  public password: string ="";
-  //public errorDialogRef: MatDialogRef<ErrorComponent>;
-
-  constructor(private dialog: MatDialog,private router: Router) { }
+  constructor(private dialog: MatDialog, private router: Router, private http: HttpClient) {
+  }
 
   ngOnInit() {
   }
-  login(){
-    if(this.username === "demo" && this.password === "demo")
-    {
-      this.router.navigate(['customer-list']);
-    }
-    else
-    {
-      
-      this.dialog.open(ErrorComponent,{  data: {
-        message: "Your login information are incorrect!"
-      }});
-    }
+
+  login() {
+    this.router.navigate(['customer-list']);
   }
 }
