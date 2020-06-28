@@ -3,7 +3,6 @@
     <mat-card-title>Create Customer</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form class="my-form">
       <mat-tab-group>
         <mat-tab label="General Information" class="my-tab">
           <table style="width: 100%" cellspacing="10">
@@ -18,42 +17,8 @@
             <tr>
               <td>
                 <mat-form-field>
-                  <mat-label>Address</mat-label>
-                  <textarea [(ngModel)]="address"  matInput></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <mat-label>Job</mat-label>
-                  <input matInput placeholder="Job" [(ngModel)]="job" name="job" required>
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <mat-label>Email</mat-label>
-                  <input matInput placeholder="Email" [(ngModel)]="email" name="email">
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
-        </mat-tab>
-        <mat-tab label="Other Information" class="my-tab">
-          <table style="width: 100%" cellspacing="10">
-            <tr>
-              <td>
-
-                <mat-checkbox [checked]="isCompany"> Is company?</mat-checkbox>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <mat-label>Created At</mat-label>
-                  <input  [value]="createdAt.value"  matInput [matDatepicker]="picker" placeholder="Date of creation">
+                  <mat-label>Start date</mat-label>
+                  <input [(ngModel)]="createdAt" [value]="createdAt"  matInput [matDatepicker]="picker" placeholder="Date of start">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -61,28 +26,14 @@
             </tr>
             <tr>
               <td>
-                <mat-label>Gender</mat-label>
-                <mat-radio-group [(value)]="selectedGender" >
-                  <mat-radio-button value="male">Male</mat-radio-button>
-                  <mat-radio-button value="female">Female</mat-radio-button>
-                </mat-radio-group>
-              </td>
-            </tr>
-            <tr>
-              <td>
                 <mat-form-field>
-                  <mat-label>Lead Source</mat-label>
-                  <mat-select [(value)]="selectedSource" placeholder="Source">
-                      <mat-option>None</mat-option>
-                      <mat-option value="email">Email Marketing</mat-option>
-                      <mat-option value="social">Social Media</mat-option>
-                      <mat-option value="affiliate">Affiliate</mat-option>
-                  </mat-select>
-
+                  <mat-label>End date</mat-label>
+                  <input  [(ngModel)]="endedAt" [value]="endedAt"  matInput [matDatepicker]="pickerEnd" placeholder="Date of end">
+                  <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerEnd></mat-datepicker>
                 </mat-form-field>
               </td>
             </tr>
-
           </table>
         </mat-tab>
       </mat-tab-group>
@@ -91,10 +42,9 @@
 
 
 
-    </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="createCustomer()" color="primary">Create</button>
+    <button mat-raised-button (click)="editCustomer()" color="primary">Create</button>
   </mat-card-actions>
 </mat-card>
 

@@ -8,10 +8,7 @@
         <td mat-cell *matCellDef="let element"> {{element.fields.KEYWORD}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <mat-cell  *matCellDef="let element"><button  mat-button  color="primary" (click)="editCustomer(element.id)"><mat-icon>edit</mat-icon></button>  </mat-cell>
-      </ng-container>
+
 
 
 

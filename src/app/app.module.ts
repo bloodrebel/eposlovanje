@@ -15,11 +15,18 @@ import {ErrorComponent} from './error.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BasicAuthInterceptor} from './basicauth.interceptor.service';
 import {MatTableModule} from '@angular/material';
+import { JobsComponent } from './jobs/jobs.component';
 const appRoutes: Routes = [
-  { path: 'customer-list', component: CustomerListComponent},
-  { path: 'customer-list/:id', component: CustomerCreateComponent },
+  { path: 'todo-list', component: CustomerListComponent},
+  { path: 'todo-list/:id', component: CustomerListComponent},
+  { path: 'jobs-list', component: JobsComponent},
+  { path: 'jobs-list/:id', component: CustomerCreateComponent },
   {
     path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: '*',
     component: LoginComponent
   },
   { path: '',
@@ -34,7 +41,8 @@ const appRoutes: Routes = [
     LoginComponent,
     CustomerCreateComponent,
     CustomerListComponent,
-    ErrorComponent
+    ErrorComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,
